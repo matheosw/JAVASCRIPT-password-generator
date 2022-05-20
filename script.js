@@ -1,24 +1,33 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-const uCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lCase = "abcdefghijklmnopqrstuvwxyz";
-const number = "0123456789";
+const generateBtn = document.querySelector("#generate");
+const uCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+const numbers = "0123456789";
 const symbols = "!@#$%^&*+-_";
-const p = "";
+
 
 function generatePassword() {
-let length = prompt("how long would you want the length");
-let uCase = prompt("Would you like Lowercase")
-let lcase = prompt("Would you like Uppercase")
-let number = prompt("Would you like Numbers")
-let symbols = prompt("Would you like Special characters")
+  let password = "password";
 
-  console.log(length, uCase, lCase, number, symbols)
+  const passwordLenght = parseInt(prompt("how long would you want the length"));
+
+ if (isNaN(passwordLenght) || passwordLenght < 8 || passwordLenght > 128 ) {
+  return password;
+ }
+
+ 
+const useLower = confirm("Would you like Lowercase")
+const useUpper = confirm("Would you like Uppercase")
+const useNumber = confirm("Would you like Numbers")
+const useSymbol = confirm("Would you like Special characters")
+
+  console.log(useLower, useUpper, useNumber, useSymbol)
+  return password;
 }
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  const password = generatePassword();
+  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
