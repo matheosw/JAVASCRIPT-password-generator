@@ -5,25 +5,48 @@ const lCaseLetters = "abcdefghijklmnopqrstuvwxyz";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*+-_";
 
-
 function generatePassword() {
-  let password = "password";
+  
+  let passwordLength = parseInt(prompt("how long would you want the length"));
 
-  const passwordLenght = parseInt(prompt("how long would you want the length"));
-
- if (isNaN(passwordLenght) || passwordLenght < 8 || passwordLenght > 128 ) {
-  return password;
+ if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128 ) {
+  console.log(passwordLength)
  }
 
- 
-const useLower = confirm("Would you like Lowercase")
-const useUpper = confirm("Would you like Uppercase")
-const useNumber = confirm("Would you like Numbers")
-const useSymbol = confirm("Would you like Special characters")
+const useLower = confirm("Would you like Lowercase");
+const useUpper = confirm("Would you like Uppercase");
+const useNumber = confirm("Would you like Numbers");
+const useSymbol = confirm("Would you like Special characters");
 
-  console.log(useLower, useUpper, useNumber, useSymbol)
-  return password;
+var char = "";
+if(useLower) {
+  char += lCaseLetters
 }
+
+if(useUpper) {
+  char += uCaseLetters
+}
+
+if(useNumber) {
+  char += numbers
+}
+
+if(useSymbol) {
+  char += symbols
+}
+
+var randomPassword = "";
+
+for(let i = 0; i < passwordLength; i++){
+  var randomCharNum = Math.floor(Math.random() * char.length);
+  randomPassword += char[randomCharNum]
+  console.log(randomPassword)
+}
+
+return randomPassword;
+
+}
+
 // Write password to the #password input
 function writePassword() {
   const password = generatePassword();
